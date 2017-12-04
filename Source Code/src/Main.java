@@ -5,9 +5,9 @@ import java.io.FileReader;
 import java.util.*;
 
 public class Main {
-   static HashMap<String,Integer>coursetopic=new HashMap<String,Integer>();
-   static List<String> course=new ArrayList<String>();
-   static List<String> prof=new ArrayList<String>();
+   static HashMap<String,Integer>coursetopic=new HashMap<String,Integer>(); //coursetopic key value apir
+   static List<String> course=new ArrayList<String>(); //course list
+   static List<String> prof=new ArrayList<String>(); //professor list
     public static void main(String[] args) {
         System.out.println("CourseId"+" "+"professorId"+" "+"Matching Score");
         readdata();
@@ -15,7 +15,7 @@ public class Main {
         {
             int max=0;
             String key="";
-            for(Map.Entry< String,Integer> entry : coursetopic.entrySet())
+            for(Map.Entry< String,Integer> entry : coursetopic.entrySet()) //extracting course and topic whose topic has more percentage
             {
                 int v=entry.getValue();
                 if(v>max)
@@ -27,86 +27,8 @@ public class Main {
             expt(key,max);
 
         }
-      /*  try {
-            BufferedReader br = new BufferedReader(new FileReader("data/course"));
-            String s="";
-            while ((s=br.readLine())!=null)
-            {
-               coursetopic(s);
-               course.add(s);
-            }
-        }
-        catch (Exception e)
-        {
-
-        }
     }
-    static void  coursetopic(String c)
-    {
-        String sp[]=c.split(",");
-        int topicid=0;
-        int percentage=0;
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("data/CourseTopic"));
-            String ct="";
-            while ((ct=br.readLine())!=null)
-            {
-
-          String csp[]=ct.split(",");
-
-          if(Integer.parseInt(sp[0])==Integer.parseInt(csp[0]))
-          {
-             if(percentage<Integer.parseInt(csp[2])) {
-                 percentage=Integer.parseInt(csp[2]);
-                 topicid = Integer.parseInt(csp[1]);
-             }
-
-          }
-
-            }
-        }
-        catch (Exception e)
-        {
-
-        }
-        if(topicid!=0) {
-        //    System.out.println(topicid);
-            expert(topicid);
-        }
-    }
-    static void expert(int topicid)
-    {
-        int le=0;
-        int pid=0;
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("data/Expertise"));
-            String e = "";
-            while ((e = br.readLine()) != null) {
-
-                String exp[] = e.split(",");
-                if(topicid==Integer.parseInt(exp[0]))
-                {
-                    if(le<Integer.parseInt(exp[2]))
-                    {
-                        le=Integer.parseInt(exp[2]);
-                        pid=Integer.parseInt(exp[1]);
-                    }
-
-                }
-                else
-                {
-                    topic.add(topicid);
-                }
-
-            }
-            if(pid!=0)
-             System.out.println("professor"+pid);
-        }catch (Exception e)
-        {
-
-        }*/
-    }
-    public static void readdata()
+    public static void readdata() //reading files at runtime
     {
         try {
             BufferedReader br = new BufferedReader(new FileReader("data/course"));
@@ -152,7 +74,7 @@ public class Main {
         try {
             BufferedReader br = new BufferedReader(new FileReader("data/Expertise"));
             String e = "";
-            while ((e = br.readLine()) != null) {
+            while ((e = br.readLine()) != null) {   //finding professor whose expertise more on that topic
 
                 String exp[] = e.split(",");
                 if(t.equals(exp[0]) & course.contains(c) & prof.contains(exp[1]))
